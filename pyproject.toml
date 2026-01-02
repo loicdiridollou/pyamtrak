@@ -7,7 +7,18 @@ authors = [
     { name = "Loïc Diridollou", email = "loic.diridollou@gmail.com" }
 ]
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "black>=25.12.0",
+    "codespell>=2.4.1",
+    "ipython>=9.8.0",
+    "jupyter>=1.1.1",
+    "mypy>=1.19.1",
+    "pycryptodome>=3.23.0",
+    "pytest>=9.0.2",
+    "requests>=2.32.5",
+    "ruff>=0.14.10",
+    "ty>=0.0.8",
+]
 
 [project.scripts]
 pyamtrak = "pyamtrak:main"
@@ -15,3 +26,26 @@ pyamtrak = "pyamtrak:main"
 [build-system]
 requires = ["uv_build>=0.9.21,<0.10.0"]
 build-backend = "uv_build"
+
+
+[tool.black]
+target-version = ["py313"]
+
+[tool.ruff]
+target-version = "py313"
+fix = true
+
+[tool.ruff.lint.pydocstyle]
+convention = "numpy"
+
+[tool.ruff.lint]
+extend-select = ["A", "B", "C", "D", "E", "F", "I", "UP", "W"]
+
+[tool.ty.environment]
+python-platform = "all"
+python-version = "3.10"
+
+[tool.ty.rules]
+possibly-unresolved-reference = "error"
+
+[tool.codespell]

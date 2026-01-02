@@ -1,2 +1,1 @@
-def main() -> None:
-    print("Hello from pyamtrak!")
+"""Init file for the package."""
