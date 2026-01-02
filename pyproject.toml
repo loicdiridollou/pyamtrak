@@ -1,0 +1,17 @@
+[project]
+name = "pyamtrak"
+version = "0.1.0"
+description = " Python tools for retrieving Amtrak trains, stations and timetables data "
+readme = "README.md"
+authors = [
+    { name = "Loïc Diridollou", email = "loic.diridollou@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = []
+
+[project.scripts]
+pyamtrak = "pyamtrak:main"
+
+[build-system]
+requires = ["uv_build>=0.9.21,<0.10.0"]
+build-backend = "uv_build"
