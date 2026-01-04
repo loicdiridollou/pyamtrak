@@ -1130,30 +1130,38 @@ name = "pyamtrak"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "pycryptodome" },
+    { name = "requests" },
+]
+
+[package.dev-dependencies]
+dev = [
     { name = "black" },
     { name = "codespell" },
     { name = "ipython" },
     { name = "jupyter" },
     { name = "mypy" },
-    { name = "pycryptodome" },
     { name = "pytest" },
     { name = "pytest-cov" },
-    { name = "requests" },
     { name = "ruff" },
     { name = "ty" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "pycryptodome", specifier = ">=3.23.0" },
+    { name = "requests", specifier = ">=2.32.5" },
+]
+
+[package.metadata.requires-dev]
+dev = [
     { name = "black", specifier = ">=25.12.0" },
     { name = "codespell", specifier = ">=2.4.1" },
     { name = "ipython", specifier = ">=9.8.0" },
     { name = "jupyter", specifier = ">=1.1.1" },
     { name = "mypy", specifier = ">=1.19.1" },
-    { name = "pycryptodome", specifier = ">=3.23.0" },
     { name = "pytest", specifier = ">=9.0.2" },
     { name = "pytest-cov", specifier = ">=7.0.0" },
-    { name = "requests", specifier = ">=2.32.5" },
     { name = "ruff", specifier = ">=0.14.10" },
     { name = "ty", specifier = ">=0.0.8" },
 ]
