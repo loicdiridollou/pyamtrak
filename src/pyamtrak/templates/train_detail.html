@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}PyAmtrak - Train {{ train_num }}{% endblock %}
+
+{% block content %}
+<h1>Train {{ train_num }}</h1>
+
+<div class="card">
+    <table>
+        <tr>
+            <th style="width: 150px;">Route</th>
+            <td><a href="/routes/{{ train.RouteName | urlencode }}">{{ train.RouteName }}</a></td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>
+                {% if train.TrainState == 'Active' %}
+                <span class="badge badge-active">{{ train.TrainState }}</span>
+                {% elif train.TrainState == 'Predeparture' %}
+                <span class="badge badge-pending">{{ train.TrainState }}</span>
+                {% else %}
+                <span class="badge badge-completed">{{ train.TrainState }}</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% if train.OriginCode %}
+        <tr>
+            <th>Origin</th>
+            <td>{{ train.OriginCode }}</td>
+        </tr>
+        {% endif %}
+        {% if train.DestCode %}
+        <tr>
+            <th>Destination</th>
+            <td>{{ train.DestCode }}</td>
+        </tr>
+        {% endif %}
+        {% if train.Velocity %}
+        <tr>
+            <th>Speed</th>
+            <td>{{ train.Velocity | int }} mph</td>
+        </tr>
+        {% endif %}
+        {% if train.Heading %}
+        <tr>
+            <th>Heading</th>
+            <td>{{ train.Heading }}</td>
+        </tr>
+        {% endif %}
+        {% if train.LastValTS %}
+        <tr>
+            <th>Last Updated</th>
+            <td>{{ train.LastValTS }}</td>
+        </tr>
+        {% endif %}
+    </table>
+</div>
+
+{% if train.stations %}
+<div class="card">
+    <h2 style="margin-bottom: 1rem; color: #4a5568; font-size: 1rem;">Station Stops</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Station</th>
+                <th>Scheduled</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for station in train.stations %}
+            <tr>
+                <td>{{ station.name }}</td>
+                <td>{{ station.scheduled }}</td>
+                <td>{{ station.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}PyAmtrak - {{ route_name }}{% endblock %}
+
+{% block content %}
+<h1>{{ route_name }}</h1>
+
+<div class="card">
+    <h2 style="margin-bottom: 1rem; color: #4a5568; font-size: 1rem;">Train Numbers</h2>
+    <div>
+        {% for train_num in trains %}
+        <a href="/trains/{{ train_num }}" class="train-number">{{ train_num }}</a>
+        {% else %}
+        <p style="color: #718096;">No trains currently running on this route.</p>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="card">
+    <h2 style="margin-bottom: 1rem; color: #4a5568; font-size: 1rem;">Status Summary</h2>
+    <table>
+        <tr>
+            <td>Active</td>
+            <td><span class="badge badge-active">{{ status.Active }}</span></td>
+        </tr>
+        <tr>
+            <td>Pending</td>
+            <td><span class="badge badge-pending">{{ status.Pending }}</span></td>
+        </tr>
+        <tr>
+            <td>Completed</td>
+            <td><span class="badge badge-completed">{{ status.Completed }}</span></td>
+        </tr>
+    </table>
+</div>
+{% endblock %}

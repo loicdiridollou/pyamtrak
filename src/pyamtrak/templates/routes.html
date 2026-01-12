@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}PyAmtrak - Routes{% endblock %}
+
+{% block content %}
+<h1>All Routes</h1>
+
+<div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>Route</th>
+                <th>Active</th>
+                <th>Pending</th>
+                <th>Completed</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for route_name, counts in routes.items() %}
+            <tr>
+                <td><a href="/routes/{{ route_name | urlencode }}">{{ route_name }}</a></td>
+                <td><span class="count count-active">{{ counts.Active }}</span></td>
+                <td><span class="count count-pending">{{ counts.Pending }}</span></td>
+                <td><span class="count count-completed">{{ counts.Completed }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

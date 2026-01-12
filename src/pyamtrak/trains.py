@@ -1,7 +1,6 @@
 """Tools to retrieve data for the different train positions."""
 
 from collections import defaultdict
-from collections.abc import Sequence
 
 import requests
 
@@ -10,7 +9,7 @@ from pyamtrak.crypto import decrypt_data, get_crypto_parameters
 TRAINS_DATA_URL = "https://maps.amtrak.com/services/MapDataService/trains/getTrainsData"
 
 
-def get_trains() -> dict[str, Sequence[int]]:
+def get_trains() -> dict[str, list[int]]:
     """Retrieve all routes from the API."""
     # Fetch the encrypted data
     response = requests.get(TRAINS_DATA_URL)

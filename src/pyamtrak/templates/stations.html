@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}PyAmtrak - Stations{% endblock %}
+
+{% block content %}
+<h1>All Stations</h1>
+
+<div class="card">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Station Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for station in stations %}
+            <tr>
+                <td style="color: #718096; width: 60px;">{{ loop.index }}</td>
+                <td>{{ station }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

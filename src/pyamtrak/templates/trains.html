@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}PyAmtrak - Trains{% endblock %}
+
+{% block content %}
+<h1>All Trains</h1>
+
+{% for route_name, train_nums in trains.items() %}
+<div class="card">
+    <h2 style="margin-bottom: 1rem;">
+        <a href="/routes/{{ route_name | urlencode }}" style="color: #2b6cb0; text-decoration: none;">{{ route_name }}</a>
+    </h2>
+    <div>
+        {% for train_num in train_nums | sort %}
+        <a href="/trains/{{ train_num }}" class="train-number">{{ train_num }}</a>
+        {% endfor %}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
